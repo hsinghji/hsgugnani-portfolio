@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>HarAnsh Singh Gugnani — Mechanical Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F7F7F5;
+      --text: #1A1A1A;
+      --text-secondary: #555550;
+      --accent: #2B5EA7;
+      --rule: #DDDDD8;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Header ── */
+    header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2rem;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .headshot {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      border: 1px dashed var(--rule);
+    }
+
+    .headshot img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .header-text h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+
+    .header-text p.title {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    section h2 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    /* ── Experience entries ── */
+    .entry {
+      margin-bottom: 2rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .entry-header h3 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .entry-header .date {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .entry-org {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+    }
+
+    .entry ul {
+      padding-left: 1.2rem;
+      list-style: none;
+    }
+
+    .entry ul li {
+      position: relative;
+      padding-left: 0.8rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .entry ul li::before {
+      content: '—';
+      position: absolute;
+      left: -0.8rem;
+      color: var(--rule);
+    }
+
+    /* ── Project entries ── */
+    .project {
+      margin-bottom: 3rem;
+    }
+
+    .project h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .project .project-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .project p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--text);
+      max-width: 65ch;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Photo gallery (projects + interests) ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      overflow-x: auto;
+    }
+
+    .gallery-item {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--rule);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      border: 1px dashed var(--rule);
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    /* ── Video ── */
+    .project-video {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Interests ── */
+    .interest-item {
+      margin-bottom: 2rem;
+    }
+
+    .interest-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .interest-item p {
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 65ch;
+      margin-bottom: 0.75rem;
+    }
+
+    /* single interest photo */
+    .interest-photo {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      background: var(--rule);
+    }
+
+    .interest-photo.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      border: 1px dashed var(--rule);
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .skill-row {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 1rem;
+      font-size: 0.92rem;
+      align-items: baseline;
+    }
+
+    .skill-label {
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .skill-value {
+      color: var(--text);
+    }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 540px) {
+      body {
+        padding: 2.5rem 1.25rem 4rem;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .skill-row {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+      }
+
+      .skill-label {
+        font-size: 0.8rem;
+      }
+
+      .entry-header {
+        flex-direction: column;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141414;
+        --text: #E8E8E4;
+        --text-secondary: #888882;
+        --accent: #5B8FD6;
+        --rule: #2A2A28;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header>
+    <div class="header-inner">
+      <!-- Replace the div below with: <img src="images/headshot.jpg" alt="HarAnsh Singh Gugnani" class="headshot" /> -->
+      <div class="headshot">headshot<br>images/<br>headshot.jpg</div>
+      <div class="header-text">
+        <h1>HarAnsh Singh Gugnani</h1>
+        <p class="title">Mechanical Engineering, Carnegie Mellon University &rsquo;28</p>
+      </div>
+    </div>
+    <nav class="contact-links">
+      <a href="mailto:agugnani@andrew.cmu.edu">agugnani@andrew.cmu.edu</a>
+      <a href="https://www.linkedin.com/in/hsgugnani" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="resume.pdf" target="_blank">Résumé (PDF)</a>
+    </nav>
+  </header>
+
+  <!-- ── About ── -->
+  <section>
+    <h2>About</h2>
+    <p>
+      I'm a junior ME student at Carnegie Mellon who builds things and sees them through to hardware.
+      My work spans autonomous UAV design, fabrication, and manual machining.
+      I'm drawn to roles where design decisions get tested against physical reality — not just simulation.
+    </p>
+  </section>
+
+  <!-- ── Experience ── -->
+  <section>
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Undergraduate Research Apprentice</h3>
+        <span class="date">May 2026 — Present</span>
+      </div>
+      <div class="entry-org">Carnegie Mellon University — CERLAB</div>
+      <ul>
+        <li>Leading the mechanical redesign of an autonomous quadcopter for GPS-denied indoor navigation, integrating LiDAR, RGB-D camera, and NVIDIA Jetson Orin NX payload.</li>
+        <li>Diagnosed two structural failure modes in the previous platform — rigid landing pads incapable of absorbing impact, and adhesive-dependent arm assemblies causing rotational instability — and developed solutions for both.</li>
+        <li>Reverted arm geometry to a sandwich plate design, redesigned propeller guard load path, and incorporated TPU-based vibration isolation. Currently transitioning into fabrication and flight testing.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Mechanical Engineering Intern</h3>
+        <span class="date">Aug 2023 — May 2024</span>
+      </div>
+      <div class="entry-org">Blue Valley CAPS</div>
+      <ul>
+        <li>Rebuilt a salvaged electric go-kart with a team of 4 over 8 months as one of two primary welders; extended the frame 8 inches using welded steel members to fit the battery and motor assembly.</li>
+        <li>Machined an oversized axle from 0.750″ to 0.625″ to meet hub tolerances while preserving the sprocket-side bore.</li>
+        <li>Designed and 3D printed a custom sprocket retention gear; modified motor-side fastener geometry to eliminate chain interference while maintaining clamping force. Delivered a working vehicle driven by multiple testers.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Pre-College Residential Advisor</h3>
+        <span class="date">Jun 2025 — Aug 2025</span>
+      </div>
+      <div class="entry-org">Carnegie Mellon University</div>
+      <ul>
+        <li>Supervised 45 high school students in a residential academic program, managing logistics and student welfare in coordination with program staff.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section>
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>Autonomous Quadcopter Redesign — CERLAB</h3>
+      <p class="project-meta">Carnegie Mellon University &middot; May 2026 — Present</p>
+      <p>
+        Full mechanical redesign of an indoor autonomous drone platform in Autodesk Inventor.
+        Identified and resolved two critical failure modes from the previous design:
+        a rigid landing pad with no shock absorption, and adhesive-dependent arms prone to rotational
+        failure. The new platform uses a carbon-fiber sandwich plate arm structure, a redesigned
+        propeller guard that redirects impact into the CF arm, and TPU vibration isolation for
+        sensitive electronics. Currently moving into fabrication and flight validation.
+      </p>
+      <!-- Gallery: add/remove .gallery-item divs as needed. Replace placeholder divs with <img> tags. -->
+      <!-- To add a video: <video class="project-video" controls><source src="images/cerlab-demo.mp4" type="video/mp4"></video> -->
+      <div class="gallery">
+        <div class="gallery-item placeholder">CAD overview<br>images/cerlab-1.jpg</div>
+        <div class="gallery-item placeholder">Arm detail<br>images/cerlab-2.jpg</div>
+        <div class="gallery-item placeholder">Propeller guard<br>images/cerlab-3.jpg</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Electric Go-Kart Rebuild</h3>
+      <p class="project-meta">Blue Valley CAPS &middot; Aug 2023 — May 2024</p>
+      <p>
+        Rebuilt a salvaged go-kart from the ground up with a four-person team.
+        Extended the steel frame by welding in new members, machined a mis-spec'd axle
+        to tolerance on the lathe, and designed a 3D printed retention gear to fix a
+        recurring drivetrain failure. The completed vehicle ran under its own power
+        and was validated by multiple drivers.
+      </p>
+      <div class="gallery">
+        <div class="gallery-item placeholder">Build photo<br>images/gokart-1.jpg</div>
+        <div class="gallery-item placeholder">Frame weld<br>images/gokart-2.jpg</div>
+        <div class="gallery-item placeholder">Drivetrain<br>images/gokart-3.jpg</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Autonomous Arduino Car</h3>
+      <p class="project-meta">CMU coursework &middot; Aug — Dec 2025</p>
+      <p>
+        Programmed an Arduino-based vehicle with IR and ultrasonic sensors for autonomous
+        line detection and distance-based braking. Developed modular motion control and
+        sensor processing code for reliable path following across varied surface and
+        lighting conditions.
+      </p>
+      <div class="gallery">
+        <div class="gallery-item placeholder">Finished car<br>images/arduino-1.jpg</div>
+        <div class="gallery-item placeholder">Sensor setup<br>images/arduino-2.jpg</div>
+      </div>
+    </div>
+
+    <div class="project">
+      <h3>Machined Tic-Tac-Toe Board</h3>
+      <p class="project-meta">CMU Manual Machining &middot; Aug — Dec 2025</p>
+      <p>
+        Designed and fabricated a complete tic-tac-toe set on a manual lathe — threaded
+        playing pieces mating with tapped holes in the base, four machined and tapped steel
+        support blocks. Maintained ±0.005″ dimensional tolerances across all components.
+      </p>
+      <div class="gallery">
+        <div class="gallery-item placeholder">Finished board<br>images/ttt-1.jpg</div>
+        <div class="gallery-item placeholder">Threading detail<br>images/ttt-2.jpg</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills ── -->
+  <section>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Engineering Tools</span>
+        <span class="skill-value">SolidWorks, Fusion 360, Autodesk Inventor, MATLAB</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Programming</span>
+        <span class="skill-value">Python, Arduino</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Fabrication</span>
+        <span class="skill-value">Manual Machining, CNC Machining, MIG Welding, 3D Printing, Laser Cutting</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Education ── -->
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-header">
+        <h3>Carnegie Mellon University</h3>
+        <span class="date">Aug 2024 — May 2028</span>
+      </div>
+      <div class="entry-org">B.S. Mechanical Engineering &middot; GPA 3.62 / 4.0</div>
+      <ul>
+        <li><strong>Completed:</strong> Fundamentals of Programming and CS, Linear Algebra, Multivariable Calculus, Engineering Statistics, Manual Machining</li>
+        <li><strong>In progress:</strong> Statics, Thermodynamics, Differential Equations</li>
+        <li><strong>Upcoming:</strong> Fluid Mechanics, 3D Mechanics, Numerical Methods, Dynamics</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Interests ── -->
+  <section>
+    <h2>Interests</h2>
+
+    <div class="interest-item">
+      <h3>Bhangra</h3>
+      <p>
+        I have been dancing Bhangra for 15 years and teaching it for 4. It's a high-intensity
+        Punjabi folk dance that demands explosive athleticism, precise coordination, and the kind
+        of physical discipline that takes years to build. In my freshman year at CMU I was a key
+        contributing member of the team when we placed 2nd at NDC, one of the most competitive
+        Bhangra tournaments in the country. I competed at a high level until an ACL tear and
+        meniscus repair surgery in 2025 — I'm currently in recovery and working my way back
+        to a full set.
+      </p>
+      <!-- Replace with: <img src="images/bhangra.jpg" alt="Bhangra performance" class="interest-photo" /> -->
+      <div class="interest-photo placeholder">Performance photo<br>images/bhangra.jpg</div>
+    </div>
+
+    <div class="interest-item">
+      <h3>Double Bass</h3>
+      <p>
+        I played double bass for 10 years, reaching a level of performance that earned me
+        admission to Carnegie Mellon as a music performance major. I eventually made the decision
+        to switch to mechanical engineering — a pivot I don't regret, though the discipline,
+        patience, and attention to detail that serious musical training demands has carried
+        directly into my engineering work.
+      </p>
+      <!-- Replace with: <img src="images/bass.jpg" alt="Bass performance" class="interest-photo" /> -->
+      <div class="interest-photo placeholder">Performance photo<br>images/bass.jpg</div>
+    </div>
+
+    <div class="interest-item">
+      <h3>Gatka</h3>
+      <p>
+        Gatka is a Sikh martial art rooted in the same tradition I grew up with — disciplined,
+        physical, and deeply tied to community. I have been practicing for 10 years and teaching
+        for 6, and still help instruct whenever I'm back home. In 2023 I competed at the national
+        championship and placed 4th, the result of years of consistent training and a sport where
+        the margin between competitors is razor thin.
+      </p>
+      <div class="gallery">
+        <!-- Replace with: <img src="images/gatka-1.jpg" alt="Gatka competition" class="gallery-item" /> -->
+        <div class="gallery-item placeholder">Competition photo<br>images/gatka-1.jpg</div>
+        <div class="gallery-item placeholder">Training photo<br>images/gatka-2.jpg</div>
+      </div>
+    </div>
+
+    <div class="interest-item">
+      <h3>Cooking</h3>
+      <p>
+        I've been cooking for 10 years, mostly rustic and home-style meals — the kind of food
+        that's about technique, patience, and good ingredients rather than presentation.
+        I'm more interested in getting a braise right than plating anything beautifully.
+      </p>
+      <!-- Replace with: <img src="images/cooking.jpg" alt="Home cooking" class="interest-photo" /> -->
+      <div class="interest-photo placeholder">Food photo<br>images/cooking.jpg</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>HarAnsh Singh Gugnani &middot; Pittsburgh, PA &middot; <a href="mailto:agugnani@andrew.cmu.edu">agugnani@andrew.cmu.edu</a></p>
+  </footer>
+
+</body>
+</html>
