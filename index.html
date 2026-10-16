@@ -34,7 +34,7 @@
       color: var(--text);
       font-size: 16px;
       line-height: 1.6;
-      max-width: 720px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 4rem 2rem 6rem;
     }
@@ -205,23 +205,46 @@
     /* ── Photo gallery (projects + interests) ── */
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 0.5rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
       margin-bottom: 1rem;
-      overflow-x: auto;
     }
 
     .gallery-item {
-      aspect-ratio: 4 / 3;
+      min-width: 0;
+      aspect-ratio: 3 / 2;
       overflow: hidden;
       background: var(--rule);
     }
 
+    /* Larger, consistently framed project and Gatka photos. */
     .gallery-item img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
+    }
+
+    /* Go-kart layout: first two photos stacked on the left, third on the right. */
+    .gokart-gallery {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(150px, 1fr));
+    }
+
+    .gokart-gallery .gallery-item:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .gokart-gallery .gallery-item:nth-child(2) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .gokart-gallery .gallery-item:nth-child(3) {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      aspect-ratio: auto;
     }
 
     .gallery-item.placeholder {
@@ -266,11 +289,33 @@
     /* single interest photo */
     .interest-photo {
       width: 100%;
-      max-width: 400px;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      max-width: none;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
       display: block;
       background: var(--rule);
+    }
+
+    /* Rotate the cooking image 90 degrees while preserving the full photo. */
+    .cooking-photo-wrap {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--rule);
+    }
+
+    .cooking-photo {
+      width: 133.333%;
+      height: 75%;
+      max-width: none;
+      flex-shrink: 0;
+      object-fit: contain;
+      transform: rotate(90deg);
+      display: block;
     }
 
     .interest-photo.placeholder {
@@ -339,7 +384,12 @@
       }
 
       .gallery {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.4rem;
+      }
+
+      .gokart-gallery {
+        grid-template-rows: repeat(2, minmax(90px, 1fr));
       }
     }
 
@@ -460,7 +510,7 @@
         recurring drivetrain failure. The completed vehicle ran under its own power
         and was validated by multiple drivers.
       </p>
-      <div class="gallery">
+      <div class="gallery gokart-gallery">
         <div class="gallery-item"><img src="gokart-1.jpg" alt="Electric go-kart rebuild" loading="lazy" /></div>
         <div class="gallery-item"><img src="gokart-2.jpg" alt="Welded steel go-kart frame" loading="lazy" /></div>
         <div class="gallery-item"><img src="gokart-3.jpg" alt="Electric go-kart drivetrain" loading="lazy" /></div>
@@ -588,7 +638,9 @@
         that's about technique, patience, and good ingredients rather than presentation.
         I'm more interested in getting a braise right than plating anything beautifully.
       </p>
-      <img src="cooking.jpg" alt="Home cooking" class="interest-photo" loading="lazy" />
+      <div class="cooking-photo-wrap">
+        <img src="cooking.jpg" alt="Home cooking" class="cooking-photo" loading="lazy" />
+      </div>
     </div>
 
   </section>
